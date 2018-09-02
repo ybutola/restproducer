@@ -5,15 +5,13 @@ import com.butola.producer.service.ItemService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by yogibutola on 8/25/18.
  */
 @RestController(value = "/restproducer")
-@Api (value = "Producer", description = "Example project for contract test demo.")
+@Api(value = "Producer", description = "Example project for contract test demo.")
 public class RestProducerController {
 
     @Autowired
@@ -24,4 +22,12 @@ public class RestProducerController {
     public void addProducerData(@RequestBody Item item) {
         itemService.createItem(new Item());
     }
+
+/*    @GetMapping
+    @ApiOperation(value = "Create an Item object.")
+    public String getProducerData() {
+        return "Hello There !!";
+    }*/
+
+
 }
