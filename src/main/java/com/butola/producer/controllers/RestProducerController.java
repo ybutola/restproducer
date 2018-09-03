@@ -1,4 +1,4 @@
-package com.butola.producer.controller;
+package com.butola.producer.controllers;
 
 import com.butola.producer.data.Item;
 import com.butola.producer.service.ItemService;
@@ -7,10 +7,13 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 /**
  * Created by yogibutola on 8/25/18.
  */
-@RestController(value = "/restproducer")
+@RestController
+@RequestMapping("/restproducer")
 @Api(value = "Producer", description = "Example project for contract test demo.")
 public class RestProducerController {
 
@@ -20,14 +23,12 @@ public class RestProducerController {
     @PostMapping(consumes = "application/json", produces = "application/json")
     @ApiOperation(value = "Create an Item object.")
     public void addProducerData(@RequestBody Item item) {
-        itemService.createItem(new Item());
+        itemService.createItem(item);
     }
 
-/*    @GetMapping
-    @ApiOperation(value = "Create an Item object.")
-    public String getProducerData() {
-        return "Hello There !!";
-    }*/
-
-
+    @GetMapping("{itemID}")
+    @ApiOperation(value = "Find an Item by it's id.")
+    public Optional<Item> getProducerData(@PathVariable Long itemID) {
+        return itemService.findItem(itemID);
+    }
 }
