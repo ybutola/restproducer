@@ -15,8 +15,8 @@ public class ItemService {
     @Autowired
     ItemRepository itemRepository;
 
-    public void createItem(Item item) {
-        itemRepository.save(item);
+    public Item createItem(Item item) {
+        return itemRepository.save(item);
     }
 
     public void deleteItem(Item item) {

@@ -1,5 +1,0 @@
-CREATE table item (
-itemID INT NOT NULL AUTO_INCREMENT,
-itemName VARCHAR(100) NOT NULL,
-itemDescription VARCHAR(200),
-PRIMARY KEY (itemID));

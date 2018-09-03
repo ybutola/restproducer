@@ -1,0 +1,5 @@
+CREATE table itemDetail (
+itemDetailID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+itemID INT FOREIGN KEY REFERENCES item(itemID),
+productionUnit VARCHAR(100) NOT NULL,
+productionType VARCHAR(200));
