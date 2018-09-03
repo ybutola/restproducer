@@ -1,11 +1,7 @@
 package com.butola.producer.data;
 
-import org.springframework.data.annotation.Id;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.*;
 
 /**
  * Created by yogibutola on 8/25/18.
@@ -14,13 +10,13 @@ import javax.persistence.GenerationType;
 public class Item {
 
     @Id
-    @GeneratedValue (strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     Long itemID;
 
-    @Column
-    String name;
+    @Column(name = "itemname")
+    String itemName;
 
-    @Column
+    @Column(name = "itemdescription")
     String itemDescription;
 
     public Long getItemID() {
@@ -31,12 +27,12 @@ public class Item {
         this.itemID = itemID;
     }
 
-    public String getName() {
-        return name;
+    public String getItemName() {
+        return itemName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
     }
 
     public String getItemDescription() {

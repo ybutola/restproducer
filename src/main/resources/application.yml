@@ -2,15 +2,30 @@ spring:
   application:
     name: restproducer
   datasource:
-    url: jdbc:mysql://localhost:3306/restproducerdb
-    username: producer
-    password: producer
+    url: jdbc:mysql://localhost:3306/contracttest
+    username: root
+    password: DesertSt0rm
     driver: com.mysql.jdbc.Driver
   jpa:
     show-sql: true
-    hibernate:
-      ddl-auto: update
-      naming-strategy: org.hibernate.cfg.ImproveNamingStrategy
-    properties:
+  hibernate:
+    ddl-auto: update
+    naming-strategy: org.hibernate.cfg.ImproveNamingStrategy
+  properties:
       hibernate:
-        dialect: org.hibernate.dialect.MySQL5Dialect
+      dialect: org.hibernate.dialect.MySQL5Dialect
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
