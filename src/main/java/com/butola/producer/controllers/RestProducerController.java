@@ -11,9 +11,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
-/**
- * Created by yogibutola on 8/25/18.
- */
 @RestController
 @RequestMapping("/restproducer")
 @Api(value = "Producer", description = "Example project for contract test demo.")
@@ -26,6 +23,12 @@ public class RestProducerController {
     @ApiOperation(value = "Create an Item object.")
     public ResponseEntity<Item> addProducerData(@RequestBody Item item) {
         return new ResponseEntity<>(itemService.createItem(item), HttpStatus.CREATED);
+    }
+
+    @PutMapping(consumes = "application/json", produces = "application/json")
+    @ApiOperation(value = "Update an existing Item.")
+    public ResponseEntity<Item> updateProducerData(@RequestBody Item item) {
+        return new ResponseEntity<>(itemService.updateItem(item), HttpStatus.OK);
     }
 
     @GetMapping("{itemID}")
