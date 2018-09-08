@@ -1,6 +1,8 @@
 package com.butola.producer.base
 
 import com.butola.producer.RestProducerApplication
+import com.butola.producer.controllers.RestProducerController
+import io.restassured.module.mockmvc.RestAssuredMockMvc
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.jdbc.core.JdbcTemplate
@@ -20,11 +22,11 @@ class RestConsumerBase extends Specification {
     /*
      * Autowired instances can't be shared. Workaround to use @Shared variables.
      *
-     * TODO: The tests are running fine in without setting the controller in standalone mode. May be because I've used the new verison of verifier. Need double check this behaviour.
      */
 
     def setupSpec() {
-        jdbcTemplate = new JdbcTemplate(dataSource)
+        RestAssuredMockMvc.standaloneSetup(RestProducerController.class)
+    //    jdbcTemplate = new JdbcTemplate(dataSource)
     }
 
     /*
@@ -32,7 +34,8 @@ class RestConsumerBase extends Specification {
      */
 
     def verifyThatRecordIsCreated(def itemID) {
-        jdbcTemplate.queryForList("select * from item where itemID = " + itemID)
+        List results =  jdbcTemplate.queryForList("select * from item where itemID = " + itemID)
+        assert results.get(0).get("itemID") == itemID
     }
 
     /*
@@ -40,7 +43,9 @@ class RestConsumerBase extends Specification {
      */
 
     def verifyThatRecordIsUpdated(def itemID, def itemDescription) {
-        jdbcTemplate.queryForList("select * from item where itemID = " + itemID)
+        List results = jdbcTemplate.queryForList("select * from item where itemID = " + itemID)
+        assert results.get(0).get("itemID") == itemID
+        assert results.get(0).get("itemDescription") == itemDescription
     }
 
     /*
