@@ -3,30 +3,32 @@ package com.butola.producer.base
 import com.butola.producer.RestProducerApplication
 import com.butola.producer.controllers.RestProducerController
 import io.restassured.module.mockmvc.RestAssuredMockMvc
+import org.assertj.core.api.BDDAssertions
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.jdbc.core.JdbcTemplate
-import spock.lang.Shared
 import spock.lang.Specification
 
 import javax.sql.DataSource
 
-@SpringBootTest(classes = RestProducerApplication.class)
+@SpringBootTest(classes = [RestProducerApplication.class, RestProducerController.class])
 class RestConsumerBase extends Specification {
-    @Shared
+    @Autowired
     JdbcTemplate jdbcTemplate
 
     @Autowired
     DataSource dataSource;
 
+    @Autowired
+    RestProducerController restProducerController
     /*
      * Autowired instances can't be shared. Workaround to use @Shared variables.
      *
      */
 
-    def setupSpec() {
-        RestAssuredMockMvc.standaloneSetup(RestProducerController.class)
-    //    jdbcTemplate = new JdbcTemplate(dataSource)
+    def setup() {
+        RestAssuredMockMvc.standaloneSetup(restProducerController)
+        //   jdbcTemplate = new JdbcTemplate(dataSource)
     }
 
     /*
@@ -34,8 +36,8 @@ class RestConsumerBase extends Specification {
      */
 
     def verifyThatRecordIsCreated(def itemID) {
-        List results =  jdbcTemplate.queryForList("select * from item where itemID = " + itemID)
-        assert results.get(0).get("itemID") == itemID
+        List results = jdbcTemplate.queryForList("select * from item where itemID = " + itemID)
+        BDDAssertions.then(itemID).isEqualTo(results.get(0).get("itemID"))
     }
 
     /*
@@ -44,8 +46,8 @@ class RestConsumerBase extends Specification {
 
     def verifyThatRecordIsUpdated(def itemID, def itemDescription) {
         List results = jdbcTemplate.queryForList("select * from item where itemID = " + itemID)
-        assert results.get(0).get("itemID") == itemID
-        assert results.get(0).get("itemDescription") == itemDescription
+        BDDAssertions.then(itemID).isEqualTo(results.get(0).get("itemID"))
+        BDDAssertions.then(itemDescription).isEqualTo(results.get(0).get("itemDescription"))
     }
 
     /*
@@ -54,6 +56,6 @@ class RestConsumerBase extends Specification {
      */
 
     def cleanupSpec() {
-        jdbcTemplate.execute("delete * from item")
+        //jdbcTemplate.execute("delete * from item")
     }
 }

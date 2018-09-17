@@ -19,9 +19,9 @@ public class ItemService {
         return itemRepository.save(item);
     }
 
-    public Item updateItem(Item item) {
-        return itemRepository.save(item);
-    }
+ /*   public int updateItem(Item item) {
+        return itemRepository.updateItem(item.getItemID(), item.getItemDescription());
+    }*/
     public void deleteItem(Item item) {
         itemRepository.delete(item);
     }

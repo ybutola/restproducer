@@ -1,11 +1,7 @@
 org.springframework.cloud.contract.spec.Contract.make {
     request {
         method 'GET'
-        url $(regex('/restproducer/2'))
-
-        headers {
-            header('Content-Type', 'application/json')
-        }
+        url ('/restproducer/2')
     }
 
     response {
@@ -19,8 +15,9 @@ org.springframework.cloud.contract.spec.Contract.make {
                 itemID         : "2",
                 itemName       : "newItem"
         ])))
+
         headers {
-            header('Content-Type': 'application/json')
+            header('Content-Type': 'application/json;charset=UTF-8')
         }
     }
 }

@@ -14,14 +14,19 @@ org.springframework.cloud.contract.spec.Contract.make {
         }
     }
     response {
-        status 200
-        body($(producer(execute('verifyThatRecordIsCreated(2)')), consumer([
-                itemDescription: "new description",
-                itemID         : "2",
-                itemName       : "newItem"
-        ])))
+        status 201
+        body(
+                $(
+                    producer(execute('verifyThatRecordIsCreated(2)')),
+                    consumer([
+                            itemDescription: "new description",
+                            itemID         : "2",
+                            itemName       : "newItem"
+                    ])
+                 )
+        )
         headers {
-            header('Content-Type': 'application/json')
+            header('Content-Type': 'application/json;charset=UTF-8')
         }
     }
 }

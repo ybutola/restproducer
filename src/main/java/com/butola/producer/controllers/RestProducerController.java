@@ -28,7 +28,7 @@ public class RestProducerController {
     @PutMapping(consumes = "application/json", produces = "application/json")
     @ApiOperation(value = "Update an existing Item.")
     public ResponseEntity<Item> updateProducerData(@RequestBody Item item) {
-        return new ResponseEntity<>(itemService.updateItem(item), HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
 
     @GetMapping("{itemID}")

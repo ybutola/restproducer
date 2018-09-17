@@ -1,4 +1,6 @@
 org.springframework.cloud.contract.spec.Contract.make {
+    ignored()
+
     request {
         method 'PUT'
         url '/restproducer'
@@ -15,13 +17,5 @@ org.springframework.cloud.contract.spec.Contract.make {
 
     response {
         status 200
-        body($(producer(execute("verifyThatRecordIsUpdated(2, 'the description has been changed')")), consumer([
-                itemDescription: "the description has been changed",
-                itemID         : "2",
-                itemName       : "newItem"
-        ])))
-        headers {
-            header('Content-Type': 'application/json')
-        }
     }
 }
