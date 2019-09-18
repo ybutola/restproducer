@@ -2,22 +2,19 @@ package com.butola.producer.base
 
 import com.butola.producer.RestProducerApplication
 import com.butola.producer.controllers.RestProducerController
+import com.butola.producer.data.Item
+import com.butola.producer.repo.ItemRepository
 import io.restassured.module.mockmvc.RestAssuredMockMvc
 import org.assertj.core.api.BDDAssertions
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.jdbc.core.JdbcTemplate
 import spock.lang.Specification
-
-import javax.sql.DataSource
 
 @SpringBootTest(classes = [RestProducerApplication.class, RestProducerController.class])
 class RestConsumerBase extends Specification {
-    @Autowired
-    JdbcTemplate jdbcTemplate
 
     @Autowired
-    DataSource dataSource;
+    ItemRepository itemRepository
 
     @Autowired
     RestProducerController restProducerController
@@ -28,26 +25,28 @@ class RestConsumerBase extends Specification {
 
     def setup() {
         RestAssuredMockMvc.standaloneSetup(restProducerController)
-        //   jdbcTemplate = new JdbcTemplate(dataSource)
     }
 
     /*
      * Verify that a records has been created.
      */
 
-    def verifyThatRecordIsCreated(def itemID) {
-        List results = jdbcTemplate.queryForList("select * from item where itemID = " + itemID)
-        BDDAssertions.then(itemID).isEqualTo(results.get(0).get("itemID"))
+    def verifyThatRecordIsCreated(Long itemID) {
+        Optional<Item> item = itemRepository.findById(itemID)
+        BDDAssertions.then(itemID).isEqualTo(item.get().itemID)
     }
 
+    def verifyThatRecordIsCreated(String itemName) {
+        Optional<Item> item = itemRepository.findByItemName(itemName)
+        BDDAssertions.then(itemName).isEqualTo(item.get().itemName)
+    }
     /*
      * Verify that a records has been updated.
      */
 
     def verifyThatRecordIsUpdated(def itemID, def itemDescription) {
-        List results = jdbcTemplate.queryForList("select * from item where itemID = " + itemID)
-        BDDAssertions.then(itemID).isEqualTo(results.get(0).get("itemID"))
-        BDDAssertions.then(itemDescription).isEqualTo(results.get(0).get("itemDescription"))
+        Optional<Item> item = itemRepository.findById(itemID)
+        BDDAssertions.then(itemDescription).isEqualTo(item.get().itemDescription)
     }
 
     /*
