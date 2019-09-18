@@ -35,7 +35,8 @@ public class RestProducerController {
     @ApiOperation(value = "Find an Item by it's id.")
     public ResponseEntity<Item> getProducerData(@PathVariable Long itemID) {
         Optional<Item> itemOptional = itemService.findItem(itemID);
-        if (itemOptional.get() != null) {
+
+        if (itemOptional.isPresent()) {
             return new ResponseEntity<>(itemOptional.get(), HttpStatus.FOUND);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
