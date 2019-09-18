@@ -1,13 +1,13 @@
-org.springframework.cloud.contract.spec.Contract.make {
-    ignored()
+import static org.springframework.cloud.contract.spec.Contract.*
 
+make {
     request {
         method 'PUT'
         url '/restproducer'
 
         body([
                 itemDescription: "the description has been changed",
-                itemID         : "2"
+                itemID         : "1"
         ])
 
         headers {
@@ -16,6 +16,6 @@ org.springframework.cloud.contract.spec.Contract.make {
     }
 
     response {
-        status 200
+        status 202
     }
 }

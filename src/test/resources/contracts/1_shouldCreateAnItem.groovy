@@ -1,11 +1,13 @@
-org.springframework.cloud.contract.spec.Contract.make {
+import static org.springframework.cloud.contract.spec.Contract.*
+
+make {
     request {
         method 'POST'
         url '/restproducer'
 
         body([
                 itemDescription: "new description",
-                itemID         : "2",
+                itemID         : "1",
                 itemName       : "newItem"
         ])
 
@@ -17,10 +19,10 @@ org.springframework.cloud.contract.spec.Contract.make {
         status 201
         body(
                 $(
-                    producer(execute('verifyThatRecordIsCreated(2)')),
+                    producer(execute('verifyThatRecordIsCreated("newItem")')),
                     consumer([
                             itemDescription: "new description",
-                            itemID         : "2",
+                            itemID         : "1",
                             itemName       : "newItem"
                     ])
                  )
