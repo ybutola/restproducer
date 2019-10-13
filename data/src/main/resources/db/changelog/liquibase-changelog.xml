@@ -1,0 +1,26 @@
+<databaseChangeLog>
+    <changeSet author="yogenderbutola (generated)" id="1570323619867-1">
+        <createTable tableName="item">
+            <column autoIncrement="true" name="itemID" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="itemName" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="itemDescription" type="VARCHAR(200)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="yogenderbutola (generated)" id="1570323619867-2">
+        <createTable tableName="itemDetail">
+            <column autoIncrement="true" name="itemDetailID" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="itemID" type="INT"/>
+            <column name="productionUnit" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="productionType" type="VARCHAR(200)"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,28 @@
+databaseChangeLog:
+    - changeSet:
+        id: 1570239206715-1
+        author: yogenderbutola (generated)
+        changes:
+        - createTable:
+            columns:
+            - column:
+                autoIncrement: true
+                constraints:
+                  constraints:
+                    primaryKey: true
+                name: id
+                type: INT
+            - column:
+                name: firstname
+                type: VARCHAR(50)
+            - column:
+                constraints:
+                  constraints:
+                    nullable: false
+                name: lastname
+                type: VARCHAR(50)
+            - column:
+                name: state
+                type: CHAR(2)
+            tableName: person
+

@@ -1,0 +1,9 @@
+FROM mysql
+MAINTAINER yogender@gmail.com
+
+ENV MYSQL_DATABASE butola
+ENV MYSQL_ROOT_PASSWORD=my-secret-pw
+ENV MYSQL_USER=dbuser
+ENV MYSQL_PASSWORD=dbpassword
+EXPOSE 3306
+
