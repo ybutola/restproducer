@@ -1,13 +1,14 @@
 package producer.base
 
-import com.butola.producer.RestProducerApplication
-import com.butola.producer.controllers.RestProducerController
-import com.butola.producer.data.Item
-import com.butola.producer.repo.ItemRepository
+
 import io.restassured.module.mockmvc.RestAssuredMockMvc
 import org.assertj.core.api.BDDAssertions
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
+import producer.RestProducerApplication
+import producer.controllers.RestProducerController
+import producer.data.Item
+import producer.repo.ItemRepository
 import spock.lang.Specification
 
 @SpringBootTest(classes = [RestProducerApplication.class, RestProducerController.class])

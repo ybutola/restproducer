@@ -8,10 +8,17 @@
    http://www.liquibase.org/xml/ns/dbchangelog
    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
-    <changeSet author="John" id="someUniqueId">
-        <addColumn tableName="users">
-            <column name="address" type="varchar(255)" />
-        </addColumn>
+    <changeSet author="yogenderbutola (generated)" id="1570323619867-1">
+        <comment>Create Item table</comment>
+        <createTable tableName="item">
+            <column autoIncrement="true" name="itemID" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="itemName" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="itemDescription" type="VARCHAR(200)"/>
+        </createTable>
     </changeSet>
 
 </databaseChangeLog>

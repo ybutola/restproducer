@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+   http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet author="yogenderbutola (generated)" id="1570323619867-2">
+        <comment>Create Item Detail table</comment>
+        <createTable tableName="itemDetail">
+            <column autoIncrement="true" name="itemDetailID" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="itemID" type="INT"/>
+            <column name="productionUnit" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="productionType" type="VARCHAR(200)"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

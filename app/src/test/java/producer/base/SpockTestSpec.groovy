@@ -1,7 +1,8 @@
 package producer.base
 
-import com.butola.producer.RestProducerApplication
+
 import org.springframework.boot.test.context.SpringBootTest
+import producer.RestProducerApplication
 import spock.lang.Specification
 
 @SpringBootTest(classes = RestProducerApplication.class)

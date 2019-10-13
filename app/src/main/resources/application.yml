@@ -20,5 +20,7 @@ spring:
   properties:
       hibernate:
       dialect: org.hibernate.dialect.MySQL5Dialect
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-master.xml
 
 
