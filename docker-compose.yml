@@ -13,15 +13,13 @@ services:
       - 8080:8083
       - 5505:5505
     environment:
-      MYSQL_URL: jdbc:mysql://db:3306/butola
+      MYSQL_URL: jdbc:mysql://producer_db:3306/butola
 
   db:
-    container_name: db
+    container_name: producer_db
     build:
       context: .
       dockerfile: ./data/Dockerfile
-    ports:
-      - 3306:3306
 
 
 
