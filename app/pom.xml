@@ -40,6 +40,8 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
+
+        <!-- Swagger -->
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
@@ -50,6 +52,7 @@
             <artifactId>springfox-swagger-ui</artifactId>
             <version>2.8.0</version>
         </dependency>
+        <!-- /Swagger -->
 
         <!-- Spock Framework -->
         <dependency>
@@ -99,15 +102,16 @@
             <version>3.0.2</version>
         </dependency>
 
-        <!-- Contract -->
+        <!-- /Contract -->
+
+        <!-- Liquibase -->
 
         <dependency>
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-core</artifactId>
             <version>3.6.3</version>
         </dependency>
-
-
+        <!-- /Liquibase -->
     </dependencies>
 
     <build>
