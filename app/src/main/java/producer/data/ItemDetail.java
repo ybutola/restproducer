@@ -1,5 +1,7 @@
 package producer.data;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 import java.sql.Date;
 
@@ -9,13 +11,16 @@ import java.sql.Date;
 @Entity
 public class ItemDetail {
 
+    @ApiModelProperty(notes = "Unique ID of the Item Detail.")
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     Long itemDetailID;
 
+    @ApiModelProperty(notes = "Item ID of the parent Item.")
     @Column
     Long itemID;
 
+    @ApiModelProperty(notes = "Production Unit of the Item.")
     @Column
     String productionUnit;
 

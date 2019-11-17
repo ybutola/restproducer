@@ -1,6 +1,8 @@
 package producer.data;
 
 
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 
 /**
@@ -9,13 +11,16 @@ import javax.persistence.*;
 @Entity
 public class Item {
 
+    @ApiModelProperty(notes = "Unique ID of the Item.")
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long itemID;
 
+    @ApiModelProperty(notes = "Name of the Item.")
     @Column(name = "itemname")
     String itemName;
 
+    @ApiModelProperty(notes = "Description of the Item.")
     @Column(name = "itemdescription")
     String itemDescription;
 
