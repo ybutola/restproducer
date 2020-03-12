@@ -22,7 +22,7 @@ pipeline {
 
         stage ('deploy') {
             steps{
-               sh 'echo "Running deploy"' 
+               sh 'echo "Running deploy which is failing"' 
                sh 'mvn deploy'
             }
         }
