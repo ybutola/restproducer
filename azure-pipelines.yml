@@ -15,8 +15,8 @@ variables:
   dockerRegistryServiceConnection: '7542d7aa-c04e-4eb9-89e1-3bd54506b265'
   imageRepository: 'restproducer'
   containerRegistry: 'learnmadhuacr.azurecr.io'
-  dockerfilePath: '/app/Dockerfile'
-  dbDockerfilePath: '/data/Dockerfile'
+  dockerfilePath: '**/app/Dockerfile'
+  dbDockerfilePath: '**/data/Dockerfile'
   tag: '$(Build.BuildId)'
   imagePullSecret: 'learnmadhuacr7825-auth'
 
