@@ -1,0 +1,16 @@
+apiVersion : apps/v1beta1
+kind: Deployment
+metadata:
+  name: restproducer 
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: restproducer 
+    spec:
+      containers:
+        - name: restproducer 
+          image: learnmadhuacr.azurecr.io/restproducer
+          ports:
+          - containerPort: 80
